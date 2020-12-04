@@ -3,6 +3,7 @@ A wip tester for 42 project : ft_printf
 
 need python3 installed to work.
 run using ./test.py (use chmod +x test.py if necessary first)
+or python3 test.py
 
 options:
 

@@ -65,6 +65,8 @@ def readConfig():
             elif "INC_PATH" in line:
                 inc_path = line[line.index('=')+1:].rstrip('\n')
     if os.path.isfile(lib_path + "/libftprintf.a") is False:
+        subprocess.run(['make','-C',lib_path])
+    if os.path.isfile(lib_path + "/libftprintf.a") is False:
         print("file libftprintf.a not found at " + lib_path)
         exit()
     if os.path.isfile(inc_path) is False:
@@ -125,7 +127,7 @@ def test(rule_nb):
     os.remove('pf')
 
 readConfig()
-setArgs();
+setArgs()
 buildC("ft.c", "ft_printf")
 x = buildC("pf.c", "printf")
 test(x)

@@ -15,5 +15,7 @@ options:
 
   -c : dont delete generated *.c files, so you can fiddle with it or idk
 
+  -g : dont delete .out files and compile with -g option
+
 WIP - rules files need to be redone, for now shamelessly inspired from https://github.com/AntoineBourin/printf-tester
 please send questions and observations to agiraude@student.42.fr

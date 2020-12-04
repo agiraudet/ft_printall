@@ -55,7 +55,7 @@ def readConfig():
     global inc_path
     if os.path.isfile("config") is False:
         with open("config", 'w') as conf:
-            conf.write("#dont use \"\" when defining paths\n#path to your libftprintf.a file\nLIB_PATH=..\n\n#path to your *.h file (only one can be used)\nINC_PATH=../includes/ft_printf.h\n")
+            conf.write("#dont use \"\" when defining paths\n#path to your ft_printf\nLIB_PATH=..\n\n#path to your *.h file (only one can be used)\nINC_PATH=../includes/ft_printf.h\n")
         print("created config file, please fill it and run again.")
         exit()
     with open("config", 'r') as conf:

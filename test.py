@@ -11,6 +11,8 @@ rules_path = "rules"
 DFLAG = False
 RFLAG = False
 TFLAG = False
+CFLAG = False
+GFLAG = False
 
 GREEN = '\033[32m'
 RED = '\033[31m'
@@ -22,6 +24,8 @@ def setArgs():
     global RFLAG
     global DFLAG
     global TFLAG
+    global CFLAG
+    global GFLAG
     readrule = False
     makerule = False
     for arg in sys.argv:
@@ -49,6 +53,10 @@ def setArgs():
                 exit()
             makerule = True
             rules_path = "rules.tmp"
+        if arg == "-c":
+            CFLAG = True
+        if arg == "-g":
+            GFLAG = True
 
 def readConfig():
     global lib_path
@@ -80,7 +88,7 @@ def buildC(path, fct):
     with open(path, 'w') as file:
         file.write("#include <stdlib.h>\n")
         if fct == "ft_printf":
-            compil = ["gcc", path, "-o", path[:-2], "-L", lib_path, "-lftprintf"]
+            compil = ["gcc", "-g", path, "-o", path[:-2], "-L", lib_path, "-lftprintf"]
             file.write("#include \""+inc_path+"\"\n")
         else:
             compil = ["gcc", path, "-o", path[:-2]]
@@ -93,7 +101,8 @@ def buildC(path, fct):
                 nb += 1
         file.write("}\n")
     subprocess.run(compil)
-    os.remove(path)
+    if CFLAG is False:
+        os.remove(path)
     return nb
 
 def getRule(linenb):
@@ -117,13 +126,14 @@ def test(rule_nb):
             if DFLAG:
                 print("printf:")
                 print("  \u02EAreturn: " + YELLOW + str(resPF.returncode) + ENDL)
-                print("  \u02EAoutput: " + YELLOW + resPF.stdout + ENDL)
+                print("  \u02EAoutput: " + YELLOW + resPF.stdout + "$" + ENDL)
                 print("ft_printf:")
-                print("  \u02EAreturned " + YELLOW + str(resFT.returncode) + ENDL)
-                print("  \u02EAoutput: " + YELLOW + resFT.stdout + ENDL + '\n')
+                print("  \u02EAreturn: " + YELLOW + str(resFT.returncode) + ENDL)
+                print("  \u02EAoutput: " + YELLOW + resFT.stdout + "$" + ENDL + '\n')
             ko += 1
     print("\n" + str(rule_nb) + " TESTS:\n" + "  OK " + GREEN + str(ok) + ENDL + "\n  KO " + RED + str(ko) + ENDL)
-    os.remove('ft')
+    if not GFLAG:
+        os.remove('ft')
     os.remove('pf')
 
 readConfig()

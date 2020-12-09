@@ -18,3 +18,5 @@ options :
 -e : add '$' at end of output lines
 
 -t <csdiuxX%p> : run tests for selected types only
+
+WIP : %p still need some adjustement

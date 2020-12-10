@@ -19,4 +19,6 @@ options :
 
 -t <csdiuxX%p> : run tests for selected types only
 
-WIP : %p still need some adjustement
+-l : test only for leaks (can use "-l val" or "-l san", san is default")
+
+WIP : -d / -a can reverse printing order if there was a crash during testing. still work tho.

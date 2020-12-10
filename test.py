@@ -334,7 +334,6 @@ def runLeakTest(path):
 parseArgs()
 parseConfig()
 genRules()
-<<<<<<< HEAD
 if not flags.get('L'):
 	buildCfiles("ft.c", "ft_printf")
 	buildCfiles("pf.c", "printf")
@@ -342,8 +341,3 @@ if not flags.get('L'):
 	runTest("ft", "pf")
 buildLeaks("leaks.c")
 runLeakTest("leaks")
-=======
-buildCfiles("ft.c", "ft_printf")
-buildCfiles("pf.c", "printf")
-runTest("ft", "pf")
->>>>>>> ea80074551e24a6dddcc38f0517b931354955fac

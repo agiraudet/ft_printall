@@ -209,6 +209,8 @@ def runTest(progA, progB):
 		print(BLD + "testing " + CYN + "%" + r + NOC)
 		for v in rules[r]:
 			rNb += 1
+			resFT = subprocess.run(['uptime'], capture_output=True, text=True)
+			resPF = resFT
 			try:
 				resFT = subprocess.run(["./" + progA, str(rNb)], capture_output=True, text=True)
 			except:
@@ -256,5 +258,5 @@ parseArgs()
 parseConfig()
 genRules()
 buildCfiles("ft.c", "ft_printf")
-buildCfiles("pf.c", "ft_printf")
+buildCfiles("pf.c", "printf")
 runTest("ft", "pf")

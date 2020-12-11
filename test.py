@@ -233,7 +233,7 @@ def buildCfiles(path, fct):
 				nb += 1
 		file.write("\n\t(void)i;\n\t(void)c;\n}\n")
 	print(LGT + "compiling {}".format(path) + NOC)
-	subprocess.run(["gcc", path, "-o", path[:-2], "-L", lib_path, "-lftprintf"])
+	subprocess.run(["gcc", "-w", path, "-o", path[:-2], "-L", lib_path, "-lftprintf"])
 	if flags.get('C') is False:
 		os.remove(path)
 	ruleNb = nb
